@@ -76,7 +76,10 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .service-card{padding:32px 24px;border:1px solid #e5e7eb;border-radius:16px;transition:all .3s var(--ease);background:var(--white)}
 .service-card:hover{border-color:var(--blue);transform:translateY(-3px);box-shadow:0 12px 32px rgba(26,58,92,.08)}
-.service-icon{width:48px;height:48px;background:var(--sky);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:22px}
+.service-icon{width:48px;height:48px;background:var(--sky);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.service-icon svg,.contact-icon svg{width:22px;height:22px;stroke:var(--blue);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.contact-icon{width:44px;height:44px;background:var(--sky);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hero-visual svg{width:80px;height:80px;stroke:white;fill:none;stroke-width:1.5;opacity:.3}
 .service-card h3{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px}
 .service-card p{font-size:14px;color:var(--gray);line-height:1.65}
 
@@ -110,7 +113,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .contact-info>p{color:var(--gray);margin-bottom:32px;line-height:1.7}
 .contact-details{display:flex;flex-direction:column;gap:20px}
 .contact-item{display:flex;gap:14px;align-items:center}
-.contact-icon{width:44px;height:44px;background:var(--sky);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+/* contact-icon defined above with svg styles */
 .contact-item strong{display:block;font-size:13px;color:var(--navy);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px}
 .contact-item p{color:var(--gray);font-size:15px}
 .contact-form{background:var(--white);border:1px solid #e5e7eb;border-radius:16px;padding:36px}
@@ -179,7 +182,7 @@ footer a:hover{color:rgba(255,255,255,.8)}
         </div>
       </div>
       <div class="hero-visual">
-        <span>&#9881;</span>
+        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
       </div>
     </div>
   </div>
@@ -203,32 +206,32 @@ footer a:hover{color:rgba(255,255,255,.8)}
     <p class="section-desc">Professional plumbing solutions for homes and businesses in Greensboro, High Point, and the surrounding Triad area.</p>
     <div class="services-grid">
       <div class="service-card">
-        <div class="service-icon">&#128167;</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
         <h3>Leak Detection &amp; Repair</h3>
         <p>Advanced leak detection technology to find and fix leaks fast &mdash; before they cause costly water damage.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">&#9889;</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
         <h3>Faucet &amp; Fixture Installation</h3>
         <p>New faucet install, shower heads, garbage disposals, and bathroom fixtures. Done right the first time.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">&#128293;</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 12c-2-2.67-4-4-4-6a4 4 0 0 1 8 0c0 2-2 3.33-4 6z"/><path d="M12 21a8 8 0 0 0 4-15"/><path d="M12 21a8 8 0 0 1-4-15"/></svg></div>
         <h3>Water Heater Services</h3>
         <p>Installation, repair, and replacement of tank and tankless water heaters. Hot water when you need it.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">&#128295;</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
         <h3>Pipe Repair &amp; Replacement</h3>
         <p>Broken, corroded, or aging pipes? We replace copper, PVC, and galvanized lines with minimal disruption.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">&#127757;</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg></div>
         <h3>Drain Cleaning</h3>
         <p>Stubborn clogs, slow drains, and sewer line blockages cleared with professional equipment.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">&#127968;</div>
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
         <h3>Emergency Plumbing</h3>
         <p>Burst pipe at 2am? We&rsquo;re available 24/7 for plumbing emergencies. Fast response, fair pricing.</p>
       </div>
@@ -274,7 +277,7 @@ footer a:hover{color:rgba(255,255,255,.8)}
         </div>
       </div>
       <div style="background:var(--sky);border-radius:20px;height:380px;display:flex;align-items:center;justify-content:center">
-        <span style="font-size:48px;opacity:.2">&#128736;</span>
+        <svg viewBox="0 0 24 24" style="width:64px;height:64px;stroke:var(--navy);fill:none;stroke-width:1.5;opacity:.2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
       </div>
     </div>
   </div>
@@ -324,28 +327,28 @@ footer a:hover{color:rgba(255,255,255,.8)}
         <p>Whether it&rsquo;s an emergency or a scheduled repair, we&rsquo;re here to help. Serving Greensboro, High Point, Kernersville, and the entire Triad area.</p>
         <div class="contact-details">
           <div class="contact-item">
-            <div class="contact-icon">&#128205;</div>
+            <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
             <div>
               <strong>Location</strong>
               <p>Greensboro, NC &mdash; Serving the Triad</p>
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">&#128222;</div>
+            <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
             <div>
               <strong>Phone</strong>
               <p>(336) 555-0199</p>
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">&#9993;</div>
+            <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
             <div>
               <strong>Email</strong>
               <p>info@plumbersgreensboronc.org</p>
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">&#9200;</div>
+            <div class="contact-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
             <div>
               <strong>Hours</strong>
               <p>Mon&ndash;Fri 7am&ndash;6pm &bull; Emergency 24/7</p>

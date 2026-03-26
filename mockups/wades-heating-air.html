@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wade's Heating & Air | Greensboro, NC HVAC</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0d2d5e;
+      --blue: #1a4fa0;
+      --sky: #2c7be5;
+      --orange: #e8600a;
+      --orange-light: #f47820;
+      --gray-50: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-400: #94a3b8;
+      --gray-600: #475569;
+      --gray-800: #1e293b;
+      --white: #ffffff;
+    }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; color: var(--gray-800); background: var(--white); }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--navy);
+      color: var(--white);
+      padding: 8px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+    .topbar a { color: #93c5fd; text-decoration: none; }
+    .topbar-left { display: flex; gap: 20px; align-items: center; }
+    .topbar-phone { font-weight: 700; font-size: 14px; color: var(--orange-light); }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--white);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid var(--orange);
+      height: 72px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+    }
+    .logo-text { line-height: 1.1; }
+    .logo-text strong {
+      display: block;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.3px;
+    }
+    .logo-text span {
+      font-size: 11px;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray-600);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta {
+      background: var(--orange);
+      color: var(--white);
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--orange-light); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 60%, #1e5bb5 100%);
+      color: var(--white);
+      padding: 80px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+      min-height: 480px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='28'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero-content { max-width: 600px; position: relative; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(232, 96, 10, 0.2);
+      border: 1px solid rgba(232, 96, 10, 0.5);
+      color: #fbb74d;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+    .hero h1 span { color: var(--orange-light); }
+    .hero p {
+      font-size: 17px;
+      line-height: 1.6;
+      color: #bdd4f0;
+      margin-bottom: 32px;
+      max-width: 480px;
+    }
+    .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--orange);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover { background: var(--orange-light); transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.25);
+      transition: background 0.2s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 40px;
+    }
+    .hero-stat strong {
+      display: block;
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--white);
+    }
+    .hero-stat span {
+      font-size: 12px;
+      color: #93c5fd;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .hero-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 32px;
+      min-width: 280px;
+      max-width: 320px;
+      position: relative;
+    }
+    .hero-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .hero-card p { font-size: 13px; color: var(--gray-600); margin-bottom: 20px; }
+    .hero-card .urgent-badge {
+      background: #fef2f2;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+    .form-group { margin-bottom: 12px; }
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 6px;
+      font-size: 14px;
+      color: var(--gray-800);
+      background: var(--gray-50);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus { border-color: var(--sky); }
+    .form-submit {
+      width: 100%;
+      background: var(--orange);
+      color: var(--white);
+      border: none;
+      padding: 13px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 4px;
+    }
+    .form-note { font-size: 11px; color: var(--gray-400); margin-top: 8px; text-align: center; }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--gray-50);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gray-600);
+    }
+    .trust-icon { color: var(--blue); }
+
+    /* ── SERVICES ── */
+    .section { padding: 72px 24px; max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(26px, 3vw, 38px);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+    }
+    .section-sub {
+      font-size: 16px;
+      color: var(--gray-600);
+      max-width: 580px;
+      line-height: 1.6;
+      margin-bottom: 48px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1.5px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .service-card:hover {
+      border-color: var(--sky);
+      box-shadow: 0 8px 32px rgba(44, 123, 229, 0.1);
+      transform: translateY(-3px);
+    }
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: #eff6ff;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .service-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .service-card p { font-size: 13px; color: var(--gray-600); line-height: 1.5; }
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--sky);
+      text-decoration: none;
+    }
+
+    /* ── WHY US ── */
+    .why-section {
+      background: var(--navy);
+      padding: 72px 24px;
+      color: var(--white);
+    }
+    .why-inner { max-width: 1100px; margin: 0 auto; }
+    .why-inner .section-title { color: var(--white); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+    .why-item { display: flex; gap: 16px; }
+    .why-num {
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--orange);
+      line-height: 1;
+      min-width: 40px;
+    }
+    .why-text h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .why-text p { font-size: 13px; color: #93c5fd; line-height: 1.5; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--gray-50); padding: 72px 24px; }
+    .testimonials-inner { max-width: 1100px; margin: 0 auto; }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .review-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 24px;
+      border: 1.5px solid var(--gray-200);
+    }
+    .stars { color: #f59e0b; font-size: 14px; margin-bottom: 12px; letter-spacing: 2px; }
+    .review-text { font-size: 14px; color: var(--gray-600); line-height: 1.6; margin-bottom: 16px; font-style: italic; }
+    .review-author { font-size: 13px; font-weight: 700; color: var(--gray-800); }
+    .review-loc { font-size: 11px; color: var(--gray-400); }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: var(--orange);
+      padding: 56px 24px;
+      text-align: center;
+    }
+    .cta-band h2 { font-size: 32px; font-weight: 900; color: var(--white); margin-bottom: 12px; }
+    .cta-band p { font-size: 16px; color: rgba(255,255,255,0.85); margin-bottom: 28px; }
+    .cta-band-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-white {
+      background: var(--white);
+      color: var(--orange);
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-outline-white {
+      border: 2px solid rgba(255,255,255,0.6);
+      color: var(--white);
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0a1f3d;
+      color: #93c5fd;
+      padding: 48px 24px 24px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand strong { display: block; font-size: 20px; font-weight: 800; color: var(--white); margin-bottom: 8px; }
+    .footer-brand p { font-size: 13px; line-height: 1.6; max-width: 280px; }
+    .footer-contact { margin-top: 20px; }
+    .footer-contact div { font-size: 13px; margin-bottom: 6px; }
+    .footer-contact span { color: var(--white); font-weight: 600; }
+    .footer-col h4 { font-size: 13px; font-weight: 700; color: var(--white); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { font-size: 13px; margin-bottom: 8px; }
+    .footer-col ul li a { color: #93c5fd; text-decoration: none; }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 20px auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .footer-bottom span { color: #475569; }
+
+    /* ── MOCKUP BANNER ── */
+    .mockup-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(13, 45, 94, 0.96);
+      color: #fff;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      z-index: 999;
+      border-top: 3px solid var(--orange);
+    }
+    .mockup-banner span { color: var(--orange-light); }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span>Serving Greensboro, Summerfield, Oak Ridge &amp; the Triad</span>
+    <span>|</span>
+    <span>Mon–Fri 7AM–6PM &bull; 24/7 Emergency Service</span>
+  </div>
+  <div>
+    <a href="#" class="topbar-phone">(336) 697-0300</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="48" height="48" rx="10" fill="#0d2d5e"/>
+      <path d="M24 10 L14 20 L14 38 L20 38 L20 28 L28 28 L28 38 L34 38 L34 20 Z" fill="#e8600a"/>
+      <path d="M10 22 L24 8 L38 22" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="36" cy="14" r="5" fill="#2c7be5"/>
+      <path d="M34 14 L36 16 L39 12" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="logo-text">
+      <strong>Wade's Heating &amp; Air</strong>
+      <span>Greensboro, NC &bull; Since 1975</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">Services</a></li>
+    <li><a href="#">About Us</a></li>
+    <li><a href="#">Financing</a></li>
+    <li><a href="#">Service Areas</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <a href="tel:3366970300" class="nav-cta">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:4px"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+    Call Now
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      50+ Years Serving the Triad
+    </div>
+    <h1>Heating &amp; Cooling<br/><span>Done Right.</span><br/>Greensboro's Trusted HVAC.</h1>
+    <p>Second-generation, family-owned since 1975. We repair, replace, and maintain HVAC systems across Greensboro, Summerfield, Oak Ridge, Pleasant Garden, and Jamestown — with 24/7 emergency response when you need it most.</p>
+    <div class="hero-buttons">
+      <a href="#" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        Call (336) 697-0300
+      </a>
+      <a href="#" class="btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Schedule Service
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <strong>50+</strong>
+        <span>Years in Business</span>
+      </div>
+      <div class="hero-stat">
+        <strong>24/7</strong>
+        <span>Emergency Service</span>
+      </div>
+      <div class="hero-stat">
+        <strong>100%</strong>
+        <span>Licensed &amp; Insured</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUICK QUOTE CARD -->
+  <div class="hero-card">
+    <span class="urgent-badge">Free Estimate</span>
+    <h3>Request a Service Call</h3>
+    <p>We'll call you back within 1 hour.</p>
+    <div class="form-group">
+      <input type="text" placeholder="Your name" />
+    </div>
+    <div class="form-group">
+      <input type="tel" placeholder="Phone number" />
+    </div>
+    <div class="form-group">
+      <select>
+        <option value="">What do you need?</option>
+        <option>AC Repair</option>
+        <option>Heating Repair</option>
+        <option>New System Install</option>
+        <option>Maintenance / Tune-Up</option>
+        <option>Emergency Service</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <input type="text" placeholder="City / Zip code" />
+    </div>
+    <button class="form-submit">Get My Free Estimate</button>
+    <div class="form-note">No pressure. No obligation. We respect your privacy.</div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <svg class="trust-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    Licensed &amp; Insured
+  </div>
+  <div class="trust-item">
+    <svg class="trust-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    24/7 Emergency Service
+  </div>
+  <div class="trust-item">
+    <svg class="trust-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    Background-Checked Techs
+  </div>
+  <div class="trust-item">
+    <svg class="trust-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+    Family-Owned &amp; Operated
+  </div>
+  <div class="trust-item">
+    <svg class="trust-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+    Financing Available
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div style="background: var(--white);">
+  <div class="section">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">Full-Service HVAC for Greensboro Homes &amp; Businesses</h2>
+    <p class="section-sub">From emergency repairs to full system replacements — our licensed technicians handle it all, every day of the year.</p>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a4fa0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/></svg>
+        </div>
+        <h3>AC Repair &amp; Maintenance</h3>
+        <p>Fast diagnosis and repair for any cooling system brand. Annual tune-ups to keep your AC running through the Carolina summers.</p>
+        <a href="#" class="service-link">Learn more
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a4fa0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Heating Repair &amp; Installation</h3>
+        <p>Furnaces, heat pumps, and gas systems serviced by certified technicians. We'll keep your family warm all winter.</p>
+        <a href="#" class="service-link">Learn more
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a4fa0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>New System Installation</h3>
+        <p>Expert installation of energy-efficient Carrier, Trane, and Lennox systems. We help you choose the right size for your home.</p>
+        <a href="#" class="service-link">Learn more
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a4fa0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Indoor Air Quality</h3>
+        <p>Air purifiers, humidifiers, UV light systems, and duct cleaning to improve the air your family breathes every day.</p>
+        <a href="#" class="service-link">Learn more
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a4fa0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M20.49 12H22M19.07 19.07l-1.41-1.41M12 20.49V22M4.93 19.07l1.41-1.41M2 12h1.51M4.93 4.93l1.41 1.41"/></svg>
+        </div>
+        <h3>Maintenance Plans</h3>
+        <p>Preventative tune-ups in spring and fall. Priority service, discounts on repairs, and no overtime charges for plan members.</p>
+        <a href="#" class="service-link">View plans
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8600a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>24/7 Emergency Repairs</h3>
+        <p>System fails at 2AM in August? We answer the phone. Real technicians, real help — nights, weekends, and holidays.</p>
+        <a href="#" class="service-link" style="color: #e8600a;">Call now — (336) 697-0300
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- WHY WADE'S -->
+<section class="why-section">
+  <div class="why-inner">
+    <div class="section-label" style="color:#fbb74d;">Why Greensboro Chooses Wade's</div>
+    <h2 class="section-title">50 Years of Trust.<br/>One Family. Your Neighbors.</h2>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-num">01</div>
+        <div class="why-text">
+          <h4>Second-Generation Family Business</h4>
+          <p>Started over 50 years ago, Wade's is still family-owned and operated right here in the Triad. We treat every home like our own.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">02</div>
+        <div class="why-text">
+          <h4>Rigorous Background Checks</h4>
+          <p>Every technician passes a background check before ever stepping into a customer's home. Your family's safety is our priority.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">03</div>
+        <div class="why-text">
+          <h4>Continuous Training &amp; Certification</h4>
+          <p>Our team stays current with the latest HVAC technology and NC codes. We work on all brands, all systems.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">04</div>
+        <div class="why-text">
+          <h4>Upfront Pricing, No Surprises</h4>
+          <p>We give you a clear quote before any work begins. No hidden fees, no surprise invoices — just honest work at fair prices.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <div class="section-label">What Customers Say</div>
+    <h2 class="section-title">Greensboro Families Trust Wade's</h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"AC went out on a Friday night in July. Wade's had a tech at my house by 9PM and fixed it same night. That kind of service is rare. I'll never use anyone else."</p>
+        <div class="review-author">Marcus T.</div>
+        <div class="review-loc">Greensboro, NC</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"Been using Wade's for 12 years. They installed our new Carrier system and the energy bills dropped noticeably. Honest people who show up when they say they will."</p>
+        <div class="review-author">Linda &amp; Bob C.</div>
+        <div class="review-loc">Summerfield, NC</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"The technician was professional, explained everything, and didn't try to upsell me on a new unit when a repair was all I needed. That's integrity. Highly recommend."</p>
+        <div class="review-author">Derrick H.</div>
+        <div class="review-loc">Oak Ridge, NC</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2>Ready to Schedule Service?</h2>
+  <p>Free estimates on new installs. Same-day service available. No overtime charges for maintenance plan members.</p>
+  <div class="cta-band-buttons">
+    <a href="tel:3366970300" class="btn-white">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      Call (336) 697-0300
+    </a>
+    <a href="#" class="btn-outline-white">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Book Online
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <strong>Wade's Heating &amp; Air</strong>
+      <p>Family-owned and operated since 1975. Serving Greensboro, Summerfield, Pleasant Garden, Oak Ridge, Jamestown, and the entire Piedmont Triad.</p>
+      <div class="footer-contact">
+        <div><span>(336) 697-0300</span> — Main Line</div>
+        <div><span>1111 Mt Hope Church Rd</span><br/>McLeansville, NC 27301</div>
+        <div>Mon–Fri 7AM–6PM &bull; 24/7 Emergencies</div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">AC Repair</a></li>
+        <li><a href="#">Heating Repair</a></li>
+        <li><a href="#">New Installations</a></li>
+        <li><a href="#">Indoor Air Quality</a></li>
+        <li><a href="#">Maintenance Plans</a></li>
+        <li><a href="#">Emergency Service</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Service Areas</h4>
+      <ul>
+        <li><a href="#">Greensboro</a></li>
+        <li><a href="#">Summerfield</a></li>
+        <li><a href="#">Oak Ridge</a></li>
+        <li><a href="#">Pleasant Garden</a></li>
+        <li><a href="#">Jamestown</a></li>
+        <li><a href="#">High Point</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Wade's Heating &amp; Air Conditioning. All rights reserved.</span>
+    <span>Licensed NC HVAC Contractor &bull; ROC# XXXXXXXXX</span>
+  </div>
+</footer>
+
+<!-- MOCKUP BANNER -->
+<div class="mockup-banner">
+  MOCKUP — Designed by <span>TW3 Technologies</span> for Wade's Heating &amp; Air &bull; willcwalton3@gmail.com &bull; (404) 860-7899
+</div>
+
+</body>
+</html>
